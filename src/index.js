@@ -18,6 +18,7 @@ import * as serviceWorker from './utils/serviceWorker'
 // CSS
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'antd/dist/antd.css'
 
 const persistedState = loadState()
 const store = createStore(
@@ -25,13 +26,14 @@ const store = createStore(
   persistedState,
   applyMiddleware(thunk)
 )
+
 store.subscribe(() => {
   saveState({
     auth: store.getState().auth
   })
 })
 
-window.store = store  // FOR TESTING
+window.store = store  // ### FOR TESTING ###
 
 ReactDOM.render((
   <Provider store={store}>

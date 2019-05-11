@@ -3,19 +3,9 @@ import { connect } from "react-redux"
 import { logout } from '../../../actions/auth'
 import './Navbar.css'
 
-import {
-  Collapse,
-  Navbar as NavbarBS,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap'
+import { Menu, Icon } from 'antd'
+const SubMenu = Menu.SubMenu
+const MenuItemGroup = Menu.ItemGroup
 
 const mapStateToProps = state => {
   return { auth: state.auth }
@@ -26,16 +16,9 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isOpen: false
-    }
-    this.toggle = this.toggle.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
-  }
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+    }
+    this.handleLogout = this.handleLogout.bind(this)
   }
 
   handleLogout() {
@@ -45,37 +28,30 @@ class Navbar extends Component {
   render() {
     return (
       <div id="Navbar">
-        <NavbarBS color="dark" dark expand="md">
-          <NavbarBrand href="/">BRAND_NAME</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Contact</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/redii/webapp-frontend">GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret className="active">
-                  {this.props.auth.user.name}
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    My Profile
-                  </DropdownItem>
-                  <DropdownItem>
-                    Settings
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem onClick={this.handleLogout}>
-                    <b>Logout</b>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
-          </Collapse>
-        </NavbarBS>
+        <Menu
+          onClick={this.handleClick}
+          selectedKeys={[this.state.current]}
+          mode="horizontal"
+        >
+          <SubMenu title={<Icon type="notification" />}>
+            <Menu.Item key="setting:1">Sample Notification 1</Menu.Item>
+            <Menu.Item key="setting:2">Sample Notification 2</Menu.Item>
+          </SubMenu>
+          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />Settings</span>}>
+            <MenuItemGroup title="Item 1">
+              <Menu.Item key="setting:1">Option 1</Menu.Item>
+              <Menu.Item key="setting:2">Option 2</Menu.Item>
+            </MenuItemGroup>
+            <MenuItemGroup title="Item 2">
+              <Menu.Item key="setting:3">Option 3</Menu.Item>
+              <Menu.Item key="setting:4">Option 4</Menu.Item>
+            </MenuItemGroup>
+          </SubMenu>
+          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="user" />{this.props.auth.user.name}</span>}>
+            <Menu.Item key="user:1">My Profile</Menu.Item>
+            <Menu.Item key="user:2" onClick={this.handleLogout}>Logout</Menu.Item>
+          </SubMenu>
+        </Menu>
       </div>
     )
   }

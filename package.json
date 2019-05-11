@@ -1,9 +1,9 @@
 {
-  "name": "website-frontend",
+  "name": "skipper-frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
+    "antd": "^3.17.0",
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "history": "^4.7.2",
@@ -22,7 +22,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start NODE_PATH=src/",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
