@@ -1,0 +1,22 @@
+#Signup {
+  margin: 2em auto 0;
+  padding: 1em;
+  max-width: 700px;
+}
+
+#Signup h1 {
+  text-align: center;
+}
+
+#Signup Form {
+  margin: 2em auto 0;
+  max-width: 400px;
+}
+
+#Signup Button {
+  width: 100%;
+}
+
+#Signup Label {
+  color: grey;
+}

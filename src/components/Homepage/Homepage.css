@@ -1,0 +1,9 @@
+#Homepage {
+  margin: 0 auto;
+  padding: 1em;
+}
+
+#Homepage #HomepageButtonGroup {
+  margin-top: 1em;
+  width: auto;
+}

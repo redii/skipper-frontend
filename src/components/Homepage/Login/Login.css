@@ -1,0 +1,26 @@
+#Login {
+  margin: 2em auto 0;
+  padding: 1em;
+  max-width: 700px;
+}
+
+#Login h1 {
+  text-align: center;
+}
+
+#Login Form {
+  margin: 2em auto 0;
+  max-width: 400px;
+}
+
+#Login Button {
+  width: 100%;
+}
+
+#Login .alert Button {
+  width: auto;
+}
+
+#Login Label {
+  color: grey;
+}

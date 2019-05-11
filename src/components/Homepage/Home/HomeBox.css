@@ -1,0 +1,27 @@
+#HomeBox {
+  margin: 2em auto 0;
+  padding: 1em;
+  max-width: 700px;
+  height: 500px;
+
+  /* border: 1px solid grey;
+  border-radius: 10px; */
+}
+
+#HomeBox h1 {
+  text-align: center;
+}
+
+#HomeBox .text {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+#HomeBox .text .list-group {
+  float: left;
+  width: 100%;
+}
+
+#HomeBox .text .col-md-6 {
+  margin: 1em 0 1em;
+}
