@@ -7,46 +7,82 @@ import Monitoring from './Monitoring/Monitoring.js'
 
 const array = [
   {
-    key: 0,
+    key: 1,
     path: '/app/home',
     exact: true,
     component: Home,
-    name: 'home'
-  },
-  {
-    key: 1,
-    path: '/app/admin',
-    exact: true,
-    component: Admin,
-    name: 'admin'
+    name: 'Home',
+    icon: 'home',
+    subs: []
   },
   {
     key: 2,
-    path: '/app/gameserver',
+    path: '',
     exact: true,
-    component: Gameserver,
-    name: 'gameserver'
+    name: 'Adminpanel',
+    icon: 'star',
+    subs: [
+      {
+        key: '2.1',
+        path: '/app/admin/server',
+        exact: true,
+        component: Admin,
+        name: 'Server',
+        icon: ''
+      },
+      {
+        key: '2.2',
+        path: '/app/admin/users',
+        exact: true,
+        component: Admin,
+        name: 'Users',
+        icon: ''
+      },
+      {
+        key: '2.3',
+        path: '/app/admin/rights',
+        exact: true,
+        component: Admin,
+        name: 'Rights',
+        icon: ''
+      }
+    ]
   },
   {
     key: 3,
-    path: '/app/banking',
-    exact: true,
-    component: Banking,
-    name: 'banking'
-  },
-  {
-    key: 4,
     path: '/app/upload',
     exact: true,
     component: Upload,
-    name: 'upload'
+    name: 'Upload',
+    icon: 'cloud-upload',
+    subs: []
   },
   {
-    key: 5,
+    key: 6,
     path: '/app/monitoring',
     exact: true,
     component: Monitoring,
-    name: 'monitoring'
+    name: 'Monitoring',
+    icon: 'line-chart',
+    subs: []
+  },
+  {
+    key: 4,
+    path: '/app/gameserver',
+    exact: true,
+    component: Gameserver,
+    name: 'Gameservers',
+    icon: 'play-circle',
+    subs: []
+  },
+  {
+    key: 5,
+    path: '/app/banking',
+    exact: true,
+    component: Banking,
+    name: 'Banking',
+    icon: 'bank',
+    subs: []
   }
 ]
 

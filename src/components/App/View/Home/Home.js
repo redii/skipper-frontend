@@ -3,6 +3,9 @@ import { connect } from "react-redux"
 import { setCurrentView } from '../../../../actions/view'
 import './Home.css'
 
+import { Typography } from 'antd'
+const Title = Typography
+
 class Home extends Component {
 
   constructor(props) {
@@ -19,7 +22,7 @@ class Home extends Component {
   render() {
     return (
       <div id="Home">
-        Home
+        <Title level={2}>Dashboard</Title>
       </div>
     )
   }

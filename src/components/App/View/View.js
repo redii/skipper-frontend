@@ -5,6 +5,9 @@ import './View.css'
 
 import ViewRoutes from './ViewRoutes'
 
+import { Layout } from 'antd'
+const Content = Layout.Content
+
 class View extends Component {
 
   constructor(props) {
@@ -14,14 +17,13 @@ class View extends Component {
 
   render() {
     return (
-      <div id="View">
-        <h1>View</h1>
+      <Content style={{ padding: '0 24px', minHeight: 280, width: '1000px' }}>
         <Router history={history}>
           <Switch>
             <ViewRoutes />
           </Switch>
         </Router>
-      </div>
+      </Content>
     )
   }
 }

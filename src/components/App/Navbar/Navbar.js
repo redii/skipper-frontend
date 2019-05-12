@@ -28,6 +28,7 @@ class Navbar extends Component {
   render() {
     return (
       <div id="Navbar">
+        <h1>Skipper</h1>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
