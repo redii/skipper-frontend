@@ -7,7 +7,7 @@ import Navbar from './Navbar/Navbar.js'
 import Sidebar from './Sidebar/Sidebar.js'
 import View from './View/View.js'
 
-import { Layout } from 'antd'
+import { Layout, Row, Col } from 'antd'
 const { Content, Footer } = Layout
 
 const mapStateToProps = state => {
@@ -27,13 +27,18 @@ class App extends Component {
       <div id="App">
         <Navbar />
         <Layout style={{ background: '#fff' }}>
-          <Content style={{ margin: '0 auto', maxWidth: '1500px', padding: '20px 0', background: '#fff' }}>
-            <Layout style={{ padding: '24px 0', background: '#fff' }}>
-              <Sidebar />
-              <View />
-            </Layout>
-          </Content>
-          <Footer style={{ textAlign: 'center', backgroundColor: '#fff' }}>
+          <Row>
+            <Col sm={0} md={3} xl={5}></Col>
+            <Col md={18} xl={14}>
+              <Content style={{ maxWidth: '1500px', background: '#fff' }}>
+                <Layout style={{ padding: '48px 0', background: '#fff' }}>
+                  <Sidebar />
+                  <View />
+                </Layout>
+              </Content>
+            </Col>
+          </Row>
+          <Footer style={{ textAlign: 'center', background: 'none' }}>
             © {new Date().getFullYear()} Henry Akmann - <a href="https://github.com/redii">Github</a>
           </Footer>
         </Layout>

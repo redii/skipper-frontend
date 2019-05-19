@@ -4,6 +4,9 @@ import history from '../utils/history'
 import setAuthToken from '../utils/setAuthToken'
 import { AUTH_USER } from '../constants/action-types'
 
+const baseURL = process.env.BASEURL || 'http://localhost:4000'
+const instance = axios.create({ baseURL: baseURL })
+
 export function authUser(user) {
   return {
     type: AUTH_USER,
@@ -13,7 +16,7 @@ export function authUser(user) {
 
 export function login(data) {
   return dispatch => {
-    return axios.post('/api/user/login', { user: data }).then(res => {
+    return instance.post('/api/user/login', { user: data }).then(res => {
       if (res.data.success) {
         const token = res.data.token
         localStorage.setItem('jwtToken', token)

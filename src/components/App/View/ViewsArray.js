@@ -28,7 +28,7 @@ const array = [
         exact: true,
         component: Admin,
         name: 'Server',
-        icon: ''
+        icon: 'cloud-server'
       },
       {
         key: '2.2',
@@ -36,7 +36,7 @@ const array = [
         exact: true,
         component: Admin,
         name: 'Users',
-        icon: ''
+        icon: 'usergroup-add'
       },
       {
         key: '2.3',
@@ -44,7 +44,7 @@ const array = [
         exact: true,
         component: Admin,
         name: 'Rights',
-        icon: ''
+        icon: 'unlock'
       }
     ]
   },

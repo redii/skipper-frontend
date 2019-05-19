@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux"
 import history from '../../../utils/history'
 import viewsArray from '../View/ViewsArray'
+import { setCurrentView } from '../../../actions/view'
 import './Sidebar.css'
 
 import { Layout, Menu, Icon } from 'antd'
@@ -18,6 +20,7 @@ class Sidebar extends Component {
   }
 
   handleClick(event) {
+    this.props.setCurrentView({ name: event.item.props.name })
     history.push(event.item.props.path)
   }
 
@@ -25,16 +28,51 @@ class Sidebar extends Component {
     var elements = viewsArray.map((view) => {
       if (view.subs.length > 0) {
         var subelements = view.subs.map((subview) => {
-          return <Menu.Item key={subview.key} path={subview.path} onClick={this.handleClick}><Icon type={subview.icon} />{subview.name}</Menu.Item>
+          return (
+            <Menu.Item
+              key={subview.key}
+              name={subview.name}
+              path={subview.path}
+              onClick={this.handleClick}
+            >
+              <Icon type={subview.icon} />
+              <span>{subview.name}</span>
+            </Menu.Item>
+          )
         })
-        return <SubMenu key={view.key} title={<span><Icon type={view.icon} />{view.name}</span>}>{subelements}</SubMenu>
+        return (
+          <SubMenu
+            key={view.key}
+            name={view.name}
+            title={
+              <span>
+                <Icon type={view.icon} />
+                <span>{view.name}</span>
+              </span>}
+          > {subelements}
+          </SubMenu>
+        )
       } else {
-        return <Menu.Item key={view.key} path={view.path} onClick={this.handleClick}><Icon type={view.icon} />{view.name}</Menu.Item>
+        return (
+          <Menu.Item
+            key={view.key}
+            name={view.name}
+            path={view.path}
+            onClick={this.handleClick}
+          >
+            <Icon type={view.icon} />
+            <span>{view.name}</span>
+          </Menu.Item>
+        )
       }
     })
 
     return (
-      <Sider width={300} style={{ background: '#007' }}>
+      <Sider
+        width={300}
+        breakpoint="lg"
+        theme="light"
+      >
         <Menu
           mode="inline"
           defaultSelectedKeys={['1']}
@@ -47,4 +85,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar
+export default connect(null, { setCurrentView })(Sidebar)

@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { logout } from '../../../actions/auth'
 import './Navbar.css'
 
-import { Menu, Icon } from 'antd'
+import { Menu, Badge, Icon } from 'antd'
 const SubMenu = Menu.SubMenu
 const MenuItemGroup = Menu.ItemGroup
 
@@ -34,11 +34,11 @@ class Navbar extends Component {
           selectedKeys={[this.state.current]}
           mode="horizontal"
         >
-          <SubMenu title={<Icon type="notification" />}>
+          <SubMenu title={<Badge dot={true}><Icon type="notification" /></Badge>}>
             <Menu.Item key="setting:1">Sample Notification 1</Menu.Item>
             <Menu.Item key="setting:2">Sample Notification 2</Menu.Item>
           </SubMenu>
-          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" />Settings</span>}>
+          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="setting" /></span>}>
             <MenuItemGroup title="Item 1">
               <Menu.Item key="setting:1">Option 1</Menu.Item>
               <Menu.Item key="setting:2">Option 2</Menu.Item>

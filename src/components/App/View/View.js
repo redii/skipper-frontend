@@ -17,7 +17,7 @@ class View extends Component {
 
   render() {
     return (
-      <Content style={{ padding: '0 24px', minHeight: 280, width: '1000px' }}>
+      <Content style={{ padding: '0 24px' }}>
         <Router history={history}>
           <Switch>
             <ViewRoutes />
