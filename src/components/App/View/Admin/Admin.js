@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
-import { setCurrentView } from '../../../../actions/view'
+import { setCurrentView } from 'actions/view'
 import './Admin.css'
 
 class Admin extends Component {

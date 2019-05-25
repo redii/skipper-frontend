@@ -1,5 +1,6 @@
 import Home from './Home/Home.js'
 import Admin from './Admin/Admin.js'
+import Users from './Admin/Users/Users.js'
 import Gameserver from './Gameserver/Gameserver.js'
 import Banking from './Banking/Banking.js'
 import Upload from './Upload/Upload.js'
@@ -34,7 +35,7 @@ const array = [
         key: '2.2',
         path: '/app/admin/users',
         exact: true,
-        component: Admin,
+        component: Users,
         name: 'Users',
         icon: 'usergroup-add'
       },

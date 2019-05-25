@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 
-import Homepage from './components/Homepage/Homepage.js'
-import App from './components/App/App.js'
+import Homepage from 'components/Homepage/Homepage.js'
+import App from 'components/App/App.js'
 
 const array = [
   {

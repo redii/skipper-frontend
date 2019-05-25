@@ -1,4 +1,4 @@
-import { AUTH_USER } from '../constants/action-types'
+import { AUTH_USER } from 'constants/action-types'
 import isEmpty from 'lodash/isEmpty'
 
 const initialState = {

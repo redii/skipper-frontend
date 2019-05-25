@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from "react-redux"
 import './Home.css'
 
-import { Typography, Card, List, Badge } from 'antd'
+import { Card, List, Badge } from 'antd'
 
 const mapStateToProps = state => {
   return { auth: state.auth }

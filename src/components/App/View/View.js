@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Router, Switch } from 'react-router-dom'
-import history from '../../../utils/history'
+import history from 'utils/history'
 import './View.css'
 
 import ViewRoutes from './ViewRoutes'

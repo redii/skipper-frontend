@@ -1,4 +1,4 @@
-import { SET_CURRENT_VIEW } from '../constants/action-types'
+import { SET_CURRENT_VIEW } from 'constants/action-types'
 
 export function setCurrentView(data) {
   return dispatch => {

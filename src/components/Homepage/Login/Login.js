@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { login } from '../../../actions/auth'
+import { login } from 'actions/auth'
 import './Login.css'
 
 import { Form, FormGroup, Col, Label, Input, Button, UncontrolledAlert } from 'reactstrap'

@@ -1,15 +1,21 @@
-import { SET_CURRENT_VIEW } from 'constants/action-types'
+import { FETCH_USERS } from 'constants/action-types'
 
 const initialState = {
-  currentView: {}
+  users: {
+    data: {
+
+    }
+  }
 }
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
 
-    case SET_CURRENT_VIEW:
+    case FETCH_USERS:
       return Object.assign(state, {
-        currentView: action.view
+        users: {
+          data: action.users
+        }
       })
 
     default:

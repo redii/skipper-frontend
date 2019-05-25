@@ -1,11 +1,11 @@
-import axios from 'axios'
+import axios from 'utils/axios'
 import jwt from 'jsonwebtoken'
-import history from '../utils/history'
-import setAuthToken from '../utils/setAuthToken'
-import { AUTH_USER } from '../constants/action-types'
+import history from 'utils/history'
+import setAuthToken from 'utils/setAuthToken'
+import { AUTH_USER } from 'constants/action-types'
 
-const baseURL = process.env.BASEURL || 'http://localhost:4000'
-const instance = axios.create({ baseURL: baseURL })
+// const baseURL = process.env.BASEURL || 'http://localhost:4000'
+// const instance = axios.create({ baseURL: baseURL })
 
 export function authUser(user) {
   return {
@@ -16,12 +16,12 @@ export function authUser(user) {
 
 export function login(data) {
   return dispatch => {
-    return instance.post('/api/user/login', { user: data }).then(res => {
+    return axios.post('/api/user/login', { user: data }).then(res => {
       if (res.data.success) {
         const token = res.data.token
         localStorage.setItem('jwtToken', token)
         setAuthToken(token)
-        dispatch(authUser(jwt.decode(token).user, false))
+        dispatch(authUser(jwt.decode(token).user))
         history.push('/app/home')
       } else {
         // dispatch(authUser())

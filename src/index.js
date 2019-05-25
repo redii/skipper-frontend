@@ -2,18 +2,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, Switch } from 'react-router-dom'
-import history from './utils/history'
+import history from 'utils/history'
 
 // Redux
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import rootReducer from './reducers'
-import { saveState, loadState } from './utils/localStorage'
+import rootReducer from 'reducers'
+import { saveState, loadState } from 'utils/localStorage'
 
 // Utils
 import IndexRoutes from './indexRoutes'
-import * as serviceWorker from './utils/serviceWorker'
+import * as serviceWorker from 'utils/serviceWorker'
 
 // CSS
 import './index.css'
