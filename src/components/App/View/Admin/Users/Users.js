@@ -4,7 +4,7 @@ import { setCurrentView } from 'actions/view'
 import axios from 'utils/axios'
 import './Users.css'
 
-import { Table } from 'antd'
+import { Table, Tag, Divider } from 'antd'
 
 const columns = [
   {
@@ -19,9 +19,32 @@ const columns = [
   },
   {
     title: 'Admin',
-    dataIndex: 'isAdmin',
+    dataIndex: 'admin',
     key: 'admin',
+    width: '100px',
+    render: isAdmin => {
+       let color = isAdmin == 'true' ? 'green' : 'volcano'
+       return (
+          <Tag color={color} key={isAdmin}>
+            {isAdmin.toUpperCase()}
+          </Tag>
+       )
+    }
   },
+  {
+    title: 'Actions',
+    dataIndex: 'actions',
+    key: 'actions',
+    fixed: 'right',
+    width: '150px',
+    render: () => (
+      <span>
+        <a href="">delete</a>
+        <Divider type="vertical" />
+        <a href="">edit</a>
+      </span>
+    )
+  }
 ]
 
 class Users extends Component {
@@ -38,7 +61,7 @@ class Users extends Component {
 
     axios.get('/api/admin/users').then((res) => {
       var data = res.data.users.map((user) => {
-        user.isAdmin = user.admin ? "true" : "false"
+        user.admin = user.admin ? "true" : "false"
         return user
       })
       this.setState({
@@ -51,12 +74,14 @@ class Users extends Component {
     return (
       <div id="Users">
         <h2>Users</h2>
-        <br />
+        <hr />
         <Table
           rowKey="_id"
           dataSource={this.state.data}
           columns={columns}
-          style={{ maxWidth: '800px' }} />
+          size="small"
+          style={{ maxWidth: '800px' }}
+          scroll={{ x: 500 }} />
       </div>
     )
   }

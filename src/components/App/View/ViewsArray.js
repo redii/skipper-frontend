@@ -22,6 +22,7 @@ const array = [
     exact: true,
     name: 'Adminpanel',
     icon: 'star',
+    right: 'admin',
     subs: [
       {
         key: '2.1',

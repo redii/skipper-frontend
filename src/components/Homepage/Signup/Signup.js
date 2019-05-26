@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Signup.css'
 
-import axios from 'axios'
+import axios from 'utils/axios'
 import { Form, FormGroup, Col, Label, Input, Button, Alert, Collapse } from 'reactstrap'
 import { BeatLoader } from 'react-spinners'
 

@@ -3,6 +3,7 @@ import isEmpty from 'lodash/isEmpty'
 
 const initialState = {
   isAuthenticated: false,
+  permissions: [],
   user: {}
 }
 
@@ -11,8 +12,9 @@ export default (state = initialState, action = {}) => {
 
     case AUTH_USER:
       return Object.assign(state, {
-        isAuthenticated: !isEmpty(action.user),
-        user: action.user
+        isAuthenticated: !isEmpty(action.data.user),
+        permissions: action.data.permissions,
+        user: action.data.user
       })
 
     default:

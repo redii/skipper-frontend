@@ -36,7 +36,7 @@ class Home extends Component {
     return (
       <div id="Home">
         <h2>Hello {this.props.auth.user.name}!</h2>
-        <br />
+        <hr />
         <Card
           title="Announcements"
           size="small"
