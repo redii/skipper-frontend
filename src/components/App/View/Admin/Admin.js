@@ -13,7 +13,7 @@ class Admin extends Component {
   }
 
   componentDidMount() {
-    this.props.setCurrentView({ name: this.state.viewName })
+    this.props.setCurrentView({ name: this.props.name, path: this.props.path })
   }
 
   render() {

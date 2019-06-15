@@ -11,7 +11,7 @@ import { Layout, Row, Col } from 'antd'
 const { Content, Footer } = Layout
 
 const mapStateToProps = state => {
-  return { auth: state.auth }
+  return { auth: state.auth, view: state.view }
 }
 
 class App extends Component {

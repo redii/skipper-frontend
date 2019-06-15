@@ -8,7 +8,7 @@ import Monitoring from './Monitoring/Monitoring.js'
 
 const array = [
   {
-    key: 1,
+    key: '1',
     path: '/app/home',
     exact: true,
     component: Home,
@@ -17,7 +17,7 @@ const array = [
     subs: []
   },
   {
-    key: 2,
+    key: '2',
     path: '',
     exact: true,
     name: 'Adminpanel',
@@ -26,10 +26,10 @@ const array = [
     subs: [
       {
         key: '2.1',
-        path: '/app/admin/server',
+        path: '/app/admin/general',
         exact: true,
         component: Admin,
-        name: 'Server',
+        name: 'General',
         icon: 'cloud-server'
       },
       {
@@ -51,7 +51,7 @@ const array = [
     ]
   },
   {
-    key: 3,
+    key: '3',
     path: '/app/upload',
     exact: true,
     component: Upload,
@@ -60,7 +60,7 @@ const array = [
     subs: []
   },
   {
-    key: 6,
+    key: '4',
     path: '/app/monitoring',
     exact: true,
     component: Monitoring,
@@ -69,7 +69,7 @@ const array = [
     subs: []
   },
   {
-    key: 4,
+    key: '5',
     path: '/app/gameserver',
     exact: true,
     component: Gameserver,
@@ -78,7 +78,7 @@ const array = [
     subs: []
   },
   {
-    key: 5,
+    key: '6',
     path: '/app/banking',
     exact: true,
     component: Banking,

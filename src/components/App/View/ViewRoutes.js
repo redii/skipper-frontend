@@ -13,7 +13,7 @@ class ViewRoutes extends Component {
               key={subroute.key}
               path={subroute.path}
               exact={subroute.exact}
-              component={subroute.component}
+              component={() => <subroute.component key={subroute.key} path={subroute.path} name={subroute.name} />}
             />
           )
         })
@@ -23,7 +23,7 @@ class ViewRoutes extends Component {
             key={route.key}
             path={route.path}
             exact={route.exact}
-            component={route.component}
+            component={() => <route.component key={route.key} path={route.path} name={route.name} />}
           />
         )
       }

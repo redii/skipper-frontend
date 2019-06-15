@@ -8,6 +8,10 @@ class Banking extends Component {
     this.state = {}
   }
 
+  componentDidMount() {
+    
+  }
+
   render() {
     return (
       <div id="Banking">

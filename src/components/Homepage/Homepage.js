@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import history from 'utils/history'
 import './Homepage.css'
 
-import { ButtonGroup, Button, UncontrolledCollapse } from 'reactstrap'
+import { UncontrolledCollapse } from 'reactstrap'
+import { Radio } from 'antd'
 import HomeBox from './Home/HomeBox.js'
 import Signup from './Signup/Signup.js'
 import Login from './Login/Login.js'
@@ -43,29 +44,23 @@ class Homepage extends Component {
     return (
       <div id="Homepage">
         <div id="HomepageButtonGroup" className="text-center">
-          <ButtonGroup size="md" onChange={this.test}>
-            <Button
+          <Radio.Group>
+            <Radio.Button
               id="homeBoxButton"
-              color="primary"
-              active= {this.state.collapse.homeBox}
               onClick={this.toggleButtonGroup}>
               Home
-            </Button>
-            <Button
+            </Radio.Button>
+            <Radio.Button
               id="loginFormButton"
-              color="primary"
-              active= {this.state.collapse.loginForm}
               onClick={this.toggleButtonGroup}>
               Login
-            </Button>
-            <Button
+            </Radio.Button>
+            <Radio.Button
               id="signupFormButton"
-              color="primary"
-              active= {this.state.collapse.signupForm}
               onClick={this.toggleButtonGroup}>
               Signup
-            </Button>
-          </ButtonGroup>
+            </Radio.Button>
+          </Radio.Group>
         </div>
         <UncontrolledCollapse
           isOpen={this.state.collapse.homeBox}

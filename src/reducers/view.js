@@ -1,7 +1,10 @@
 import { SET_CURRENT_VIEW } from 'constants/action-types'
 
 const initialState = {
-  currentView: {}
+  currentView: {
+    name: "",
+    path: ""
+  }
 }
 
 export default (state = initialState, action = {}) => {

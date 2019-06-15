@@ -5,7 +5,9 @@ export function setCurrentView(data) {
     dispatch({
       type: SET_CURRENT_VIEW,
       view: {
-        name: data.name
+        key: data.key,
+        name: data.name,
+        path: data.path
       }
     })
   }

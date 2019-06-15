@@ -4,9 +4,6 @@ import history from 'utils/history'
 import setAuthToken from 'utils/setAuthToken'
 import { AUTH_USER } from 'constants/action-types'
 
-// const baseURL = process.env.BASEURL || 'http://localhost:4000'
-// const instance = axios.create({ baseURL: baseURL })
-
 export function authUser(data) {
   return {
     type: AUTH_USER,

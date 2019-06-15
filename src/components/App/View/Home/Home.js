@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
+import { setCurrentView } from 'actions/view'
+import axios from 'utils/axios'
 import './Home.css'
 
 import { Card, List, Badge } from 'antd'
@@ -8,57 +10,46 @@ const mapStateToProps = state => {
   return { auth: state.auth }
 }
 
-const data = [
-  {
-    title: 'Ant Design Title 1',
-  },
-  {
-    title: 'Ant Design Title 2',
-  },
-  {
-    title: 'Ant Design Title 3',
-  },
-  {
-    title: 'Ant Design Title 4',
-  }
-]
-
 class Home extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      viewName: 'Home'
+      data: []
     }
+  }
+
+  componentDidMount() {
+    axios.get('/api/home/announcements').then((res) => {
+      this.setState({
+        data: res.data.announcements
+      })
+    })
   }
 
   render() {
     return (
       <div id="Home">
-        <h2>Hello {this.props.auth.user.name}!</h2>
+        <h2>Hello <b>{this.props.auth.user.name}</b>!</h2>
         <hr />
         <Card
           title="Announcements"
           size="small"
           style={{ maxWidth: "700px" }}
-          extra={<Badge count={5} />}
-        >
+          extra={<Badge count={this.state.data.length} />}>
           <List
-            itemLayout="horizontal"
-            dataSource={data}
+            dataSource={this.state.data}
             renderItem={item => (
               <List.Item>
                 <List.Item.Meta
-                  title={<a href="https://ant.design">{item.title}</a>}
-                  description="Ant Design, a design language for web applications by Ant UED Team"
-                />
+                  title={<span>{item.title}</span>}
+                  description={item.body}/>
               </List.Item>
-            )}
-          />
+            )} />
         </Card>
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, { setCurrentView })(Home)
