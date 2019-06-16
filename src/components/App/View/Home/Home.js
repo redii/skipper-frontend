@@ -35,7 +35,7 @@ class Home extends Component {
         <Card
           title="Announcements"
           size="small"
-          style={{ maxWidth: "700px" }}
+          style={{ maxWidth: "500px" }}
           extra={<Badge count={this.state.data.length} />}>
           <List
             dataSource={this.state.data}

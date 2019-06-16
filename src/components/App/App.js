@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
+import { logout } from 'actions/auth'
 import history from 'utils/history'
 import './App.css'
 
@@ -19,6 +20,10 @@ class App extends Component {
   componentDidMount() {
     if (!this.props.auth.isAuthenticated) {
       history.push('/')
+    } else {
+      if (this.props.auth.expiresIn < (Date.now() / 1000)) {
+        this.props.logout()
+      }
     }
   }
 
@@ -28,8 +33,8 @@ class App extends Component {
         <Navbar />
         <Layout style={{ background: '#fff' }}>
           <Row>
-            <Col sm={0} md={2} xl={4}></Col>
-            <Col md={20} xl={16}>
+            <Col sm={0} md={2} lg={4} xxl={7}></Col>
+            <Col sm={24} md={20} lg={16} xxl={10}>
               <Content style={{ maxWidth: '1500px', background: '#fff' }}>
                 <Layout style={{ padding: '48px 0', background: '#fff' }}>
                   <Sidebar />
@@ -47,4 +52,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps, { logout })(App)
