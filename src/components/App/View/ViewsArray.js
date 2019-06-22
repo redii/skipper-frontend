@@ -52,20 +52,20 @@ const array = [
   },
   {
     key: '3',
-    path: '/app/upload',
-    exact: true,
-    component: Upload,
-    name: 'Upload',
-    icon: 'cloud-upload',
-    subs: []
-  },
-  {
-    key: '4',
     path: '/app/monitoring',
     exact: true,
     component: Monitoring,
     name: 'Monitoring',
     icon: 'line-chart',
+    subs: []
+  },
+  {
+    key: '4',
+    path: '/app/upload',
+    exact: true,
+    component: Upload,
+    name: 'Upload',
+    icon: 'cloud-upload',
     subs: []
   },
   {

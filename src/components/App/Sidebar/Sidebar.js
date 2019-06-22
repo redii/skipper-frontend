@@ -31,7 +31,7 @@ class Sidebar extends Component {
 
   render() {
     var elements = viewsArray.map((view) => {
-      if (this.props.auth.isAuthenticated) {
+      if (this.props.auth.isAuthenticated && this.props.auth.permissions) {
         if (this.props.auth.permissions.includes(view.right) || !view.right) {
           if (view.subs.length > 0) {
             var subelements = view.subs.map((subview) => {

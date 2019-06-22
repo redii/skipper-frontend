@@ -36,14 +36,25 @@ class Upload extends Component {
 
   handleAction(event) {
     let props = event.target.attributes
+    let file = this.state.data.find(file => file._id = props.fileid.value)
+
     switch(event.target.value) {
-      case 'copy':
-        break;
+      case 'download':
+        axios.get(`/api/files/download/${props.fileid.value}`, {
+          responseType: 'blob'
+        }).then((res) => {
+          const url = window.URL.createObjectURL(new Blob([res.data]))
+          const link = document.createElement('a')
+          link.href = url
+          link.setAttribute('download', file.name)
+          document.body.appendChild(link)
+          link.click()
+        })
+        break
       case 'delete':
         axios.post('/api/files/delete', {
           id: props.fileid.value
         }).then((res) => {
-          console.log(res);
           if (res.data.success) {
             let newData = this.state.data.filter(r => r._id !== props.fileid.value)
             this.setState({ data: newData })
@@ -52,7 +63,7 @@ class Upload extends Component {
             message.error(res.data.message)
           }
         })
-        break;
+        break
       default:
         break;
     }
@@ -112,7 +123,7 @@ class Upload extends Component {
         width: '150px',
         render: _id => (
           <Button.Group>
-            <Button value="copy" size="small" type="primary" fileid={_id} onClick={this.handleAction} disabled>copy</Button>
+            <Button value="download" size="small" type="primary" fileid={_id} onClick={this.handleAction}>download</Button>
             <Button value="delete" size="small" type="danger" fileid={_id} onClick={this.handleAction}>delete</Button>
           </Button.Group>
         )
