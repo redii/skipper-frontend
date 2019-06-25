@@ -1,3 +1,19 @@
+# Skipper Frontend
+
+The Skipper Frontend is used for my personal website and administration tool. It is build on multiple different frameworks such as...
+- React.js
+- Redux
+- AntDesign Components
+
+It is an webapp which I use to proivde various different features, which I need over time. Current modules:
+- Administration
+  - Users
+- Upload
+- Banking
+
+
+# React README
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
