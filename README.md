@@ -5,7 +5,7 @@ The Skipper Frontend is used for my personal website and administration tool. It
 - Redux
 - AntDesign Components
 
-It is an webapp which I use to proivde various different features, which I need over time. Current modules:
+It is an webapp which I use to proivde a variety features, which I need over time. Current modules:
 - Administration
   - Users
 - Upload
