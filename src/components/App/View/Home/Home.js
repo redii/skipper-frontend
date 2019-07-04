@@ -30,7 +30,7 @@ class Home extends Component {
   render() {
     return (
       <div id="Home">
-        <h2>Hello <b>{this.props.auth.user.name}</b>!</h2>
+        <h2>Hello <b>{this.props.auth.name}</b>!</h2>
         <hr />
         <Card
           title="Announcements"

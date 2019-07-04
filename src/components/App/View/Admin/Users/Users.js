@@ -4,7 +4,7 @@ import { setCurrentView } from 'actions/view'
 import axios from 'utils/axios'
 import './Users.css'
 
-import { Table, Button, Tag, message } from 'antd'
+import { Table, Button, Tag, Popconfirm, message } from 'antd'
 
 class Users extends Component {
 
@@ -19,25 +19,20 @@ class Users extends Component {
 
   componentDidMount() {
     axios.get('/api/admin/users').then((res) => {
-      var data = res.data.users.map((user) => {
-        user.admin = user.admin ? "true" : "false"
-        return user
-      })
       this.setState({
-        data: data
+        data: res.data.users
       })
     })
   }
 
-  handleAction(event) {
-    let props = event.target.attributes
-    switch(event.target.value) {
+  handleAction(action, _id) {
+    switch(action) {
       case 'delete':
         axios.post('/api/admin/users/delete', {
-          id: props.userid.value
+          id: _id
         }).then((res) => {
           if (res.data.success) {
-            let newData = this.state.data.filter(r => r._id !== props.userid.value)
+            let newData = this.state.data.filter(r => r._id !== _id)
             this.setState({ data: newData })
             message.success(res.data.message)
           } else {
@@ -68,16 +63,18 @@ class Users extends Component {
       },
       {
         title: 'Admin',
-        dataIndex: 'admin',
+        dataIndex: 'permissions',
         key: 'admin',
-        width: '100px',
-        render: isAdmin => {
-           let color = isAdmin === 'true' ? 'green' : 'volcano'
-           return (
-              <Tag color={color} key={isAdmin}>
-                {isAdmin.toUpperCase()}
+        width: 'auto',
+        render: permissions => {
+          return permissions.map(permission => {
+            let color = permission === 'admin' ? 'magenta' : 'blue'
+            return (
+              <Tag color={color} key={permission}>
+                {permission}
               </Tag>
-           )
+            )
+          })
         }
       },
       {
@@ -85,11 +82,33 @@ class Users extends Component {
         dataIndex: '_id',
         key: 'actions',
         fixed: 'right',
-        width: '150px',
+        width: '110px',
         render: _id => (
           <Button.Group>
-            <Button value="edit" size="small" type="primary" userid={_id} onClick={this.handleAction} disabled>edit</Button>
-            <Button value="delete" size="small" type="danger" userid={_id}  onClick={this.handleAction}>delete</Button>
+            <Button
+              value="edit"
+              size="small"
+              type="primary"
+              onClick={() => this.handleAction('edit', _id)}
+              disabled
+            >
+              edit
+            </Button>
+            <Popconfirm
+              placement="right"
+              title="Are you sure?"
+              onConfirm={() => this.handleAction('delete', _id)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button
+                value="delete"
+                size="small"
+                type="danger"
+              >
+                delete
+              </Button>
+            </Popconfirm>
           </Button.Group>
         )
       }

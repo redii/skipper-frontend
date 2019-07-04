@@ -33,8 +33,8 @@ class App extends Component {
         <Navbar />
         <Layout style={{ background: '#fff' }}>
           <Row>
-            <Col sm={0} md={2} lg={4} xxl={7}></Col>
-            <Col sm={24} md={20} lg={16} xxl={10}>
+            <Col sm={0} md={2} lg={4} xxl={6}></Col>
+            <Col sm={24} md={20} lg={16} xxl={12}>
               <Content style={{ maxWidth: '1500px', background: '#fff' }}>
                 <Layout style={{ padding: '48px 0', background: '#fff' }}>
                   <Sidebar />

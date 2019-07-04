@@ -7,7 +7,8 @@ import {
   Icon,
   message,
   Table,
-  Button
+  Button,
+  Popconfirm
 } from 'antd'
 
 class Upload extends Component {
@@ -34,13 +35,12 @@ class Upload extends Component {
     })
   }
 
-  handleAction(event) {
-    let props = event.target.attributes
-    let file = this.state.data.find(file => file._id = props.fileid.value)
+  handleAction(action, _id) {
+    let file = this.state.data.find(file => file._id = _id)
 
-    switch(event.target.value) {
+    switch(action) {
       case 'download':
-        axios.get(`/api/files/download/${props.fileid.value}`, {
+        axios.get(`/api/files/download/${_id}`, {
           responseType: 'blob'
         }).then((res) => {
           const url = window.URL.createObjectURL(new Blob([res.data]))
@@ -53,11 +53,10 @@ class Upload extends Component {
         break
       case 'delete':
         axios.post('/api/files/delete', {
-          id: props.fileid.value
+          id: _id
         }).then((res) => {
           if (res.data.success) {
-            let newData = this.state.data.filter(r => r._id !== props.fileid.value)
-            this.setState({ data: newData })
+            this.getherFiles()
             message.success(res.data.message)
           } else {
             message.error(res.data.message)
@@ -123,8 +122,29 @@ class Upload extends Component {
         width: '150px',
         render: _id => (
           <Button.Group>
-            <Button value="download" size="small" type="primary" fileid={_id} onClick={this.handleAction}>download</Button>
-            <Button value="delete" size="small" type="danger" fileid={_id} onClick={this.handleAction}>delete</Button>
+            <Button
+              value="download"
+              size="small"
+              type="primary"
+              onClick={() => this.handleAction('download', _id)}
+            >
+              download
+            </Button>
+            <Popconfirm
+              placement="right"
+              title="Are you sure?"
+              onConfirm={() => this.handleAction('delete', _id)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button
+                value="delete"
+                size="small"
+                type="danger"
+              >
+                delete
+              </Button>
+            </Popconfirm>
           </Button.Group>
         )
       }

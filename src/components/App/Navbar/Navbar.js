@@ -48,7 +48,7 @@ class Navbar extends Component {
               <Menu.Item key="setting:4">Option 4</Menu.Item>
             </MenuItemGroup>
           </SubMenu>
-          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="user" />{this.props.auth.user.name}</span>}>
+          <SubMenu title={<span className="submenu-title-wrapper"><Icon type="user" />{this.props.auth.name}</span>}>
             <Menu.Item key="user:1">My Profile</Menu.Item>
             <Menu.Item key="user:2" onClick={this.handleLogout}>Logout</Menu.Item>
           </SubMenu>
