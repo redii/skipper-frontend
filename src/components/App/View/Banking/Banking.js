@@ -2,17 +2,25 @@ import React, { Component } from 'react'
 import axios from 'utils/axios'
 import './Banking.css'
 
-import { Row, Col, Upload, Button, Icon, Tooltip, Statistic, message } from 'antd'
+import { Upload, Table, Button, Icon, Tooltip, Statistic, message } from 'antd'
 
 class Banking extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      data: []
+    }
   }
 
   componentDidMount() {
     // fetch uncategorized transactions or something
+    axios.get('/api/banking/transactions').then((res) => {
+      this.setState({
+        data: res.data.transactions
+      })
+      console.log(res)
+    })
   }
 
   render() {
@@ -36,24 +44,46 @@ class Banking extends Component {
       }
     }
 
+    const columns = [
+      {
+        title: 'Name',
+        dataIndex: 'name',
+      },
+      {
+        title: 'Date',
+        dataIndex: 'date',
+      },
+      {
+        title: 'Transactiondate',
+        dataIndex: 'transactiondate',
+      },
+      {
+        title: 'Amount',
+        dataIndex: 'amount',
+      }
+    ]
+
+
+    // TODO DATE TIMEZONE/FORMAT 
+
+
+
     return (
       <div id="Banking">
         <h2>Banking</h2>
         <hr />
-        <Row gutter={16}>
-          <Col span={8}>
-            <Upload {...uploadProps}>
-              <Tooltip placement="right" title="CSV-CAMT export file">
-                <Button style={{marginLeft: "2em", marginTop: "1em"}}>
-                  <Icon type="upload" /> Import Transactions
-                </Button>
-              </Tooltip>
-            </Upload>
-          </Col>
-          <Col span={16}>
-            <Statistic title="uncategorized" value={93} suffix="/ 100" />
-          </Col>
-        </Row>
+        <div style={{float:"left", marginRight:"3em"}}>
+          <Upload {...uploadProps}>
+            <Tooltip placement="right" title="CSV-CAMT export file">
+              <Button style={{marginLeft: "2em", marginTop: "1em"}}>
+                <Icon type="upload" /> Import Transactions
+              </Button>
+            </Tooltip>
+          </Upload>
+        </div>
+        <Statistic title="last upload" value="01.01.1970" style={{float:"left", marginRight:"2em"}} />
+        <Statistic title="uncategorized" value={93} suffix="/ 100" />
+        <Table columns={columns} dataSource={this.state.data} style={{marginTop:"2em"}} />
       </div>
     )
   }
